@@ -1,45 +1,109 @@
-# WordPress Translation Filler (Extended) - Google Chrome/Firefox Extension/Edge
+# WP PolyFill
 
-Automatically fill translations on translate.wordpress.org using API's and indicate the accuracy of translation according to locale glossary.
+A browser extension that streamlines WP translation workflows on translate.wordpress.org with AI-powered translations and glossary-based accuracy checking.
 
-This extension helps with translation of originals on translate.wordpress.org and has the following features:
-1. Fetch translations using API's like DeepL, OpenAI, Google and Microsoft.
-2. Indicate translation accuracy based on uploaded locale glossary.
-3. Provide convenient Approve/Reject button based on translation accuracy.
-4. Integrate Languagetool LT to run spellchecks on your translations.
-5. Replace strings pre/post translation and convert words to lowercase.
-6. Prevent altering brandnames to lowercase, by adding the brands into the field "SpellCheck Ignore words".
-7. Words within this table are also not marked when using "LT spellchecker".
-8. Words within this table will also not get a "hyphen" added within the translation
-9. Improved behavior when GlotDict is also active: [GlotDict](https://github.com/Mte90/GlotDict) Google Chrome/Firefox extension.
+## ✨ Features
 
-For full documentation visit the [Wiki](https://github.com/vibgyj/WPTranslationFiller/wiki).
-If any bugs/problems are found, [please add an issue](https://github.com/vibgyj/WPTranslationFiller/issues/new).
+- **🤖 AI Translation APIs**: DeepL, OpenAI, Google Translate, Microsoft Translator
+- **📚 Glossary Integration**: Upload locale glossaries for translation accuracy validation
+- **✅ Smart Approval**: One-click approve/reject based on glossary compliance
+- **🔍 Spell Checking**: Integrated LanguageTool for translation quality
+- **🔧 Text Processing**: Pre/post translation string replacement and formatting
+- **🏷️ Brand Protection**: Preserve brand names and terminology
+- **🔗 GlotDict Compatible**: Enhanced integration with [GlotDict extension](https://github.com/Mte90/GlotDict)
 
-# Installation
+## 📖 Documentation
 
-## Method 1 (recommended)
-1. Download the [Google Chrome extension](https://chromewebstore.google.com/detail/wordpress-translation-fil/fpmjcgmhkbgdkggnkbamibglcpiijhim) or [Firefox add-on](https://addons.mozilla.org/nl/firefox/addon/wp-translation-filler-extended/) from their respective stores. You can also download the [original (non-extended) extension](https://chrome.google.com/webstore/detail/wordpress-translation-fil/jpkhdloebckgcnealfnkpkafpmhkmphj)
-2. WordPress Translation Filler Extended will be installed, after which you need to activate and configure it.
-3. Open the options page from within the Extensions or add-ons menu and set the [parameters as shown in the Wiki](https://github.com/vibgyj/WPTranslationFiller/wiki/2.-Parameters)
+- **[📚 Full Wiki](https://github.com/lammersbjorn/WP-PolyFill/wiki)** - Complete documentation
+- **[🐛 Report Issues](https://github.com/lammersbjorn/WP-PolyFill/issues/new)** - Bug reports and feature requests
 
-## Method 2 (Chrome only)
-1. Create the ZIP using the dropdown "Code", and download it (https://github.com/vibgyj/WPTranslationFiller)
-2. Move the downloaded ZIP to a installation folder.
-3. Extract the ZIP.
-2. Open Google Chrome extensions and enable **Developer mode**.
-3. Use the **Load unpacked** button and point to the extracted folder "\src\manifest".
-4. WordPress Translation Filler will be installed,after which you need to activate and configure it.
-5. Open the options page from within the Extensions or add-ons menu and set the [parameters as shown in the Wiki](https://github.com/vibgyj/WPTranslationFiller/wiki/2.-Parameters)
+## 🚀 Installation
 
-# After installation
-1. After the installation and activation, you will get new buttons within the project.
-2. The "Translate" button above the list translates the whole page selected.
-3. The "Translate" button within the editor, only translates the selected record.
-4. The "Check" button is used to check if the translated page is using glossary verbs.
-5. For other functionality check the Wiki pages.
+### Option 1: Browser Stores (Recommended)
 
-# Git versioning
-1. git tag v1.4.1
-2. git Extended tag 2.7.4
-2. git push --tags
+#### Chrome
+1. Install from [Chrome Web Store]()
+2. Configure via Extensions → WP PolyFill → Options
+
+#### Firefox
+1. Install from [Firefox Add-ons]()
+2. Configure via Add-ons Manager → WP PolyFill → Preferences
+
+### Option 2: Manual Installation
+
+#### Chrome (Developer Mode)
+```bash
+# Build the extension
+./build.sh
+
+# In Chrome:
+# 1. Go to chrome://extensions/
+# 2. Enable "Developer mode"
+# 3. Click "Load unpacked"
+# 4. Select the build/chrome/ folder
+```
+
+#### Firefox (Temporary Installation)
+```bash
+# Build the extension
+./build.sh
+
+# In Firefox:
+# 1. Go to about:debugging
+# 2. Click "This Firefox"
+# 3. Click "Load Temporary Add-on"
+# 4. Select build/firefox/manifest.json
+```
+
+#### Firefox (Permanent Installation)
+```bash
+# Build the extension
+./build.sh
+
+# Install the generated firefox-addon.zip:
+# 1. Go to about:addons
+# 2. Click the gear icon → "Install Add-on From File"
+# 3. Select firefox-addon.zip
+```
+
+## ⚙️ Configuration
+
+After installation, configure your API keys and preferences:
+
+1. **Open Options/Preferences** from your browser's extension menu
+2. **Set API Keys** for your preferred translation services
+3. **Upload Glossary** files for your target locales
+4. **Configure Settings** as described in the [Wiki](https://github.com/lammersbjorn/WP-PolyFill/wiki/2.-Parameters)
+
+## 🎯 Usage
+
+Once installed and configured:
+
+- **Translate Page**: Use the "Translate" button above the translation list
+- **Translate Single**: Click "Translate" within individual translation editors
+- **Quality Check**: Use "Check" to validate translations against your glossary
+- **Approve/Reject**: Smart buttons appear based on glossary compliance
+
+## 🛠️ Development
+
+See [DEVELOPMENT.md](./DEVELOPMENT.md) for development setup, build instructions, and contribution guidelines.
+
+---
+
+## 📊 Project Info
+
+- **License**: Open Source
+- **Browsers**: Chrome, Firefox, Edge
+- **Platforms**: WordPress.org Translation Platform
+- **APIs Supported**: DeepL, OpenAI, Google Translate, Microsoft Translator
+
+## 🔗 Links
+
+- [📚 Documentation Wiki](https://github.com/lammersbjorn/WP-PolyFill/wiki)
+- [🐛 Issue Tracker](https://github.com/lammersbjorn/WP-PolyFill/issues)
+- [🔌 Chrome Web Store]()
+- [🦊 Firefox Add-ons](/)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please check the [issues](https://github.com/lammersbjorn/WP-PolyFill/issues) for ways to help or create a new issue for bugs and feature requests.

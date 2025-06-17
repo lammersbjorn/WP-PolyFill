@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta description="WP PolyFill - Options" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.2"
+      content-type="image/svg+xml"
+    />
+    <title>WP PolyFill - Options</title>
+    <script type="text/javascript" src="options.js" defer></script>
+    <style>
+      .form-input {
+        margin: 5px 0;
+      }
+
+      .labeled-checkbox {
+        display: block;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        font-size: 12pt;
+      }
+
+      #footer tr,
+      #options tr {
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+        paddin              <a
+                rel="noopener"
+                href="https://github.com/lammersbjorn/WP-PolyFill/wiki"
+                target="_blank"
+                >Wiki documentation</a
+              >: 5px !important;
+        padding-right: 5px !important;
+        text-align: left;
+        background-color: #04aa6d;
+        color: white;
+        width: 600px;
+      }
+
+      #footer td,
+      #options td {
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 800px;
+      }
+
+      #google_api_key {
+        width: 350px;
+      }
+
+      #deepl_api_key {
+        width: 350px;
+      }
+
+      #microsoft_api_key {
+        width: 350px;
+      }
+
+      #OpenAI_api_key {
+        width: 350px;
+      }
+
+      #glossary_file {
+        display: block;
+        font-style: italic;
+        width: 250px;
+      }
+
+      #text_glossary_file_second {
+        display: block;
+        font-style: italic;
+        width: 250px;
+      }
+
+      #tmWait {
+        width: 50px;
+      }
+
+      #DeepLWait {
+        width: 50px;
+      }
+
+      #OpenAIWait {
+        width: 50px;
+      }
+
+      #bulkWait {
+        width: 50px;
+      }
+
+      #OpenAI_temp {
+        width: 40px;
+      }
+      #screenWidth {
+        width: 350px;
+      }
+
+      #TMtreshold {
+        width: 50px;
+      }
+
+      #text_verbs {
+        width: calc(100% - 6px);
+        min-height: 100px;
+      }
+
+      #text_openai_prompt {
+        width: calc(100% - 6px);
+        min-height: 100px;
+      }
+
+      #text_openai_review {
+        width: calc(100% - 6px);
+        min-height: 100px;
+      }
+
+      #text_pre_verbs {
+        width: calc(100% - 6px);
+        min-height: 100px;
+      }
+
+      #text_ignore_verbs {
+        width: calc(100% - 6px);
+        min-height: 100px;
+      }
+
+      #backbutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        padding: 5px 0;
+        background-color: #04aa6d;
+      }
+
+      #save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        padding: 5px 0;
+      }
+
+      .savebutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /* Tooltip container */
+      .tooltip {
+        position: relative;
+        background-color: #0085ba;
+        color: white;
+        width: 21px;
+        height: 21px;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        cursor: help;
+      }
+
+      .tooltip::before {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        left: 50%;
+        top: -20px;
+        transition: all 0.25s ease;
+      }
+
+      .tooltip::after {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        left: 50%;
+        top: -20px;
+        transition: all 0.25s ease;
+      }
+
+      .tooltip::before {
+        content: "";
+        border-width: 8px 5px 0 5px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.3) transparent transparent transparent;
+        margin-left: -5px;
+      }
+
+      .tooltip::after {
+        content: attr(data-tooltip);
+        transform: translate(-50%, -100%);
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        color: #eaeaea;
+        background-color: #0085ba;
+        /*background-color: rgba(0,0,0,.3); */
+        padding: 0.5rem;
+        border-radius: 5px;
+        min-width: 315px;
+      }
+      /* Show the tooltip text when you mouse over the tooltip container */
+      .tooltip:hover::before {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .tooltip:hover::after {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      fieldset {
+        border: 1px solid #000;
+      }
+
+      .wppo-info {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        clear: both;
+      }
+
+      a:hover,
+      a:visited,
+      a:link,
+      a:active {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="backbutton">
+        <input id="backbutton" type="button" value="Close options page" />
+      </div>
+      <table id="options">
+        <tr>
+          <td>
+            <label for="google_api_key">Google API Key</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                id="google_api_key"
+                type="text"
+                value="Google-api key->"
+                placeholder="Google API key"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="microsoft_api_key">Microsoft API Key</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                id="microsoft_api_key"
+                type="text"
+                value="Microsoft-api key->"
+                placeholder="Microsoft API key"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="deepl_api_key">Deepl API Key</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                id="deepl_api_key"
+                type="text"
+                value="DeepL-api key->"
+                placeholder="DeepL API key"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="DeeplFree">License is for DeepL Free</label>
+          </td>
+          <td>
+            <label>
+              <input type="checkbox" id="DeeplFree" />
+              <span
+                class="tooltip"
+                data-tooltip="Select this if you are using a free license from Deepl"
+                >?</span
+              >
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="OpenAI_api_key">OpenAI API Key</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input id="OpenAI_api_key" type="text" value="OpenAI-api key->" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="transselect">Select a translator:</label>
+          </td>
+          <td>
+            <div class="form-select">
+              <select
+                title="Select a translator"
+                name="transsel"
+                id="transselect"
+              >
+                <option value="deepl">Deepl</option>
+                <option value="google">Google</option>
+                <option value="microsoft">Microsoft</option>
+                <option value="OpenAI">OpenAI</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="OpenAIselect">Select a model for OpenAI:</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <select
+                title="Select a model for OpenAI"
+                name="OpenAIsel"
+                id="OpenAIselect"
+              >
+                <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                <option value="gpt-3.5-turbo-16k">gpt-3.5-turbo-16k</option>
+                <option value="gpt-3.5-turbo-1106">gpt-3.5-turbo-1106</option>
+                <option value="gpt-4">gpt-4</option>
+                <option value="gpt-4.1">gpt-4.1</option>
+                <option value="gpt-4-1106-preview">gpt-4-1106-preview</option>
+                <option value="gpt-4-turbo">gpt-4-turbo</option>
+                <option value="gpt-4o">gpt-4o</option>
+                <option value="gpt-4o-mini">gpt-4o-mini</option>
+              </select>
+              <label for="OpenAI_temp">Temperature:</label>
+              <input
+                type="number"
+                min="0"
+                max="2"
+                step=".1"
+                id="OpenAI_temp"
+                value="0.5"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="ToneSelect">Select a tone for OpenAI:</label>
+          </td>
+          <td>
+            <div>
+              <select
+                title="Select a tone for OpenAI"
+                name="ToneSel"
+                id="ToneSelect"
+              >
+                <option value="formal">Formal</option>
+                <option value="informal">Informal</option>
+                <option value="neutral">Neutral</option>
+                <option value="official">Official</option>
+                <option value="professional">Professional</option>
+                <option value="polite">Polite</option>
+                <option value="strict">Strict</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="destination_lang">Destination Language</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input id="destination_lang" type="text" value="nl" />
+              <span
+                class="tooltip"
+                data-tooltip="Use the id from the list of languages provided by the API translator in lowercase"
+                >?</span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="glossary_file">Glossary File default(csv)</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input id="glossary_file" type="file" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>File uploaded at date</label>
+          </td>
+          <td colspan="1">
+            <div>
+              <span style="width: 320px" id="glossary_file_uploaded"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="glossary_file_second">Glossary File second (csv)</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input id="glossary_file_second" type="file" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>File uploaded at date</label>
+          </td>
+          <td colspan="1">
+            <div>
+              <span
+                style="width: 320px"
+                id="glossary_file_second_uploaded"
+              ></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="languagetool_key">Languagetool Key</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                style="width: 320px"
+                id="languagetool_key"
+                type="text"
+                value="-api key->"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="LangToolFree">Set this for languagetool free</label>
+          </td>
+          <td>
+            <label>
+              <input type="checkbox" id="LangToolFree" />
+              <span
+                class="tooltip"
+                data-tooltip="Set this for using languagetool free"
+                >?</span
+              >
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="languagetool_user">Languagetool user</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                style="width: 320px"
+                id="languagetool_user"
+                type="text"
+                value="-user name->"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="languagetool_language">Languagetool language</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                style="width: 120px"
+                id="languagetool_language"
+                type="text"
+                value="-language-> nl-NL"
+                placeholder="Enter language in format xx-XX"
+              />
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="tmWait">TM waiting time</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input id="tmWait" type="text" value="500" />
+              <span
+                class="tooltip"
+                data-tooltip="Change this when you get to many no suggestions results"
+                >?</span
+              >
+              <label style="margin: 10px" for="OpenAIWait"
+                >OpenAI waiting time</label
+              >
+              <input id="OpenAIWait" type="text" value="10" />
+              <span
+                class="tooltip"
+                data-tooltip="Change this when you get to many no suggestions results"
+                >?</span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="bulkWait">Bulk and DeepL save waiting time</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input id="bulkWait" type="text" value="1000" />
+              <span
+                class="tooltip"
+                data-tooltip="Change this when bulk save skips records"
+                >?</span
+              >
+              <label style="margin: 15px" for="DeepLWait"
+                >DeepL waiting time</label
+              >
+              <input id="DeepLWait" type="text" value="5" />
+              <span
+                class="tooltip"
+                data-tooltip="Change this when DeepL skips records"
+                >?</span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="TMtreshold">TM treshold</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                id="TMtreshold"
+                type="number"
+                min="80"
+                max="100"
+                value="90"
+              />
+              <span
+                class="tooltip"
+                data-tooltip="Change this if the results for TM are not OK"
+                >?</span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="screenWidth">Screen witdth in %</label>
+          </td>
+          <td>
+            <div class="form-input">
+              <input
+                type="range"
+                id="screenWidth"
+                value="90"
+                min="0"
+                max="100"
+              />
+              <span id="rangeValue">90</span>
+              <span
+                class="tooltip"
+                data-tooltip="Change this value to alter the width of the table"
+                >?</span
+              >
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="form-input">
+        <label for="text_openai_prompt">OpenAI prompt</label>
+        <span
+          class="tooltip"
+          data-tooltip="With the value of this field the prompt will be populated"
+          >?</span
+        >
+        <textarea id="text_openai_prompt"> </textarea>
+      </div>
+      <div class="form-input">
+        <label for="text_openai_review">OpenAI review prompt</label>
+        <span
+          class="tooltip"
+          data-tooltip="With the value of this field the review prompt will be populated"
+          >?</span
+        >
+        <textarea id="text_openai_review"> </textarea>
+      </div>
+      <div class="form-input">
+        <label for="text_pre_verbs">Pre Translation Replace</label>
+        <span
+          class="tooltip"
+          data-tooltip="With this table you can replace verbs before sending them to the translator API"
+          >?</span
+        >
+        <textarea id="text_pre_verbs">
+Your,Je
+You,Je
+            </textarea
+        >
+      </div>
+      <div class="form-input">
+        <label for="text_verbs">Post Translation Replace</label>
+        <span
+          class="tooltip"
+          data-tooltip="With this table you can replace verbs after sending them to the translator API"
+          >?</span
+        >
+        <textarea id="text_verbs">
+wrong1,right1
+            </textarea
+        >
+      </div>
+      <div class="form-input">
+        <label for="text_ignore_verbs">Spellcheck ignore words</label>
+        <span
+          class="tooltip"
+          data-tooltip="With this table you can ignore verbs for spellchecking"
+          >?</span
+        >
+        <textarea id="text_ignore_verbs">
+WooCommerce
+            </textarea
+        >
+      </div>
+      <fieldset>
+        <label class="form-input">
+          <span for="export_verbs">Export post translation verbs </span>
+          <button type="button" id="exportverbs">Export verbs</button>
+        </label>
+      </fieldset>
+      <fieldset>
+        <label id="dvImportSegments" class="fileupload">
+          <span>Upload post translation replace CSV File</span>
+          <input id="importPost" type="file" />
+        </label>
+      </fieldset>
+      <br />
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="Auto-LT-spellcheck" />
+        <span>Auto spellcheck after pagecheck</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="Auto-review-OpenAI" />
+        <span>Auto review with OpenAi after pagecheck</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="comp-translations" />
+        <span>Compare translations</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="show-convertToLower" />
+        <span>Convert words to lowercase except first word</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="Force-formal" />
+        <span>Force to use formal tone</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="show-glotDictGlos" />
+        <span>Show GlotDict</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="show-history" />
+        <span>Show history</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="use-default-glossary" />
+        <span>Use default glossary</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="use-strict-validation" />
+        <span>Use strict validation</span>
+      </label>
+      <label class="labeled-checkbox">
+        <input type="checkbox" id="auto-copy-clipboard" />
+        <span>auto copy to clipboard</span>
+      </label>
+      <br />
+      <table id="footer">
+        <tr>
+          <td>
+            <div class="savebutton">
+              <input id="save" type="button" value="Save" />
+            </div>
+          </td>
+          <td>
+            <div class="wppo-info">
+              <a
+                rel="noopener"
+                href="https://github.com/lammersbjorn/WP-PolyFill/wiki"
+                target="_blank"
+                >Wiki documentation</a
+              >
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
