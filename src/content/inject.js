@@ -1,23 +1,7 @@
 ﻿// Injected script
 
 function checkLocale() {
-    // 30-11-2022 PSS If th        } else if (typeof myScreenWidth == 'undefined') {
-            if (screenWidth == 1455) {
-                myScreenWidth = '90%';
-                // Apply the new max-width style with !important
-                gpContentElement.style.setProperty('max-width', myScreenWidth, 'important');
-                chrome.storage.local.set({
-                    WPPOscreenWidth: '90'
-                });
-            }
-            else {
-                myScreenWidth = '90%';
-                // Apply the new max-width style with !important
-                gpContentElement.style.setProperty('max-width', myScreenWidth, 'important');
-                chrome.storage.local.set({
-                    WPPOscreenWidth: '90'
-                });
-            } used within a project then the locale is not determined properly #261
+    // Fix for #261: when used within a project then the locale is not determined properly
     const localeString = window.location.href;
     let local = localeString.split("/");
     //console.debug("length locale:",local.length,local)

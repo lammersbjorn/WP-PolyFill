@@ -1174,3 +1174,68 @@ function restorePlaceholdersAfterTranslation(text, originalText) {
     });
 }
 
+// Function to check the current locale from URL
+function checkLocale() {
+    // Fix for #261: when used within a project then the locale is not determined properly
+    const localeString = window.location.href;
+    let local = localeString.split("/");
+    let locale;
+    
+    if (local.length == 8) {
+        locale = local[4];
+    }
+    else if (local.length == 9) {
+        // if we are not within the translation table, the locale is at a different position
+        if (local.includes("locale")) {
+            locale = local[4];
+        }
+        else {
+            locale = local[6];
+        }
+    }
+    else if (local.length == 10) {
+        if (local.includes("import-translations")) {
+            locale = local[6];
+        }
+        else {
+            locale = local[7];
+        }
+    }
+    else if (local.length == 11) {
+        if (local.includes("import-translations")) {
+            locale = local[7];
+        }
+        else {
+            locale = local[8];
+        }
+    }
+    else {
+        locale = "en-gb";
+    }
+    return locale;
+}
+
+// Function to adjust layout screen width
+function adjustLayoutScreen() {
+    // Retrieve value from chrome local storage
+    chrome.storage.local.get(['WPPOscreenWidth'], function (result) {
+        var screenWidth = screen.width;
+        var myScreenWidth = result.WPPOscreenWidth;
+        const gpContentElement = document.querySelector('.gp-content');
+        
+        if (gpContentElement) {
+            // Apply the width setting if available
+            if (myScreenWidth && myScreenWidth !== 'undefined') {
+                gpContentElement.style.setProperty('max-width', myScreenWidth + '%', 'important');
+            } else {
+                // Default to 90% if no setting found
+                myScreenWidth = '90%';
+                gpContentElement.style.setProperty('max-width', myScreenWidth, 'important');
+                chrome.storage.local.set({
+                    WPPOscreenWidth: '90'
+                });
+            }
+        }
+    });
+}
+
