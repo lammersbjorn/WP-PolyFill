@@ -219,7 +219,7 @@ function startsearch(currWindow, curloc, locale, consistsWindow) {
                       //  timer: 2000,
                      //   playSound: null,
                       //  title: "Fetching records",
-                     //   img: "/img",
+                     //   img: "assets/images/icons",
                      //   myWindow:currWindow,
                    // });
                     fetch(search_url, myInit)

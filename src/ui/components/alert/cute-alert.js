@@ -4,7 +4,7 @@ const cuteAlert = ({
     type,
     title,
     message,
-    img = "/img",
+    img = "assets/images/icons",
     buttonText = 'OK',
     confirmText = 'OK',
     vibrate = [],
